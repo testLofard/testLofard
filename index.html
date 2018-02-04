@@ -3,18 +3,37 @@
 <html>
 <head>
     <title></title>
+	<style>
+			body{
+				background: #EC3942
+			}
+
+			h1{
+				text-align: center;
+				font-size: 4em;
+				color: #064F54;
+				padding-top: 30vh;
+			}
+			p{
+				text-align: center;
+				font-size: 4em;
+				color: #064F54;
+			}
+	</style>
 </head>
-<body>
-	<p1 id="p1">Дней без наеба с хлебом</p>
+<body>	
+	<h1>Дней без обнама:</h1>
+	<br>
+	<p id="p1"></p>
 		<script>
-		var first_date = [02,01,2018];
+		var first_date = [01,01,2018];
 		var myDate = new Date
 		var day = myDate.getDate();
 		var month = myDate.getMonth();
 		if (first_date[1] == month){
 				var days = day - first_date[0];
 				document.getElementById("p1").innerHTML= days;
-
+				
 			}
 		
 	
