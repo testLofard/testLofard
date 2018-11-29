@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+
+		.int{
+			width: 100%;
+			min-height: 45vh;
+			font-size: 3em;
+			text-align: center;
+			}
+		.bb{
+			width: 100%;
+			min-height: 8.5vh;
+			background: #1165BC;
+			font-size: 3em;
+			text-align: center;
+			font-family: tahoma;
+			padding-top: 1.5vh;
+			color: #FFFFFF;
+		}
+
+		.color1{
+			background: #F1F1F1
+		}
+
+		.color2{
+			background: #F1F1Ff;
+			position: relative;
+			top: -5px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="int color1" id='input-text'>
+	<div class='bb' onclick="main()">перевести</div>
+	
+	<input type="text" class="int color2" id='output-text'>
+
+	<script type="text/javascript">
+		rev = false
+		var textCode = [
+		['@', 'A', 'Ȁ',],			                  //а
+		['b', '6', 'β'], 			                  //б
+		['8', 'v', '√' , '|3'],		                  //в
+		['r', '┌ '],  				                  //г
+		['|)', 'D', '∂'], 			                  //д
+		['E', 'ε', 'ę'], 			                  //е
+		['}|{', 'zh', ']|[', ')|(', '>|<'],           //ж
+		['3', 'Ζ', '∃', 'ʓ'], 		                  //з
+		['|/|', 'i', 'u', '1'], 	                  //и
+		['j', 'j', 'y'], 			                  //й
+		['|<', '|{', 'k', '[{'], 	                  //к
+		['L', 'J|'], 				                  //л
+		['|\\/|', '√√\\'], 			                  //м
+		['|-|', '|\\|',], 			                  //н
+		['0', 'Ø', 'θ'], 			                  //о
+		['n', '|`|', '[`]'], 		                  //п
+		['P', 'Ɍ', 'Ⓟ'], 			                  //р
+		['c', 's', '(' , 'Ͼ'], 		                  //с
+		['7', 't', 'Ϯ'],			                  //т
+		['^/', 'у'],				                  //у
+		['f', '|=', 'o|o'],			                  //ф
+		['}{', '][', ')('],			                  //х
+		['||,', ],					                  //ц
+		['4'],						                  //ч
+		['|_|_|', 'ω' , 'w' ],		                  //ш
+		['w,', 'ω,'],				                  //щ
+		["'"],						                  //ь
+		['∋'],						                  //э
+		['|-0'],					                  //ю
+		['ya', 'R'],				                  //я
+		
+
+
+		]
+
+		
+
+		function rand(arg){
+			
+			return Math.floor(Math.random() * (arg - 0) + 0);
+		}
+
+		function selection(arg){
+			
+			return textCode[arg][rand(textCode[arg].length)];
+		}
+
+
+		function print(arg, barg){
+			if (barg == false){
+				document.getElementById("output-text").value = arg.substr(0, arg.length - 9)
+			}
+			else{
+				document.getElementById("output-text").value = arg.substr(9, arg.length)
+			}
+		}
+		function translit(arg){
+			output = "";
+
+			if 		(arg == "а") { output += selection(0) } 	//a
+			else if (arg == "б") { output += selection(1) }		//б
+			else if (arg == "в") { output += selection(2) }		//в	
+			else if (arg == "г") { output += selection(3) }		//г
+			else if (arg == "д") { output += selection(4) }		//д	
+			else if (arg == "е" | arg == "ё") 
+								 { output += selection(5) }		//е	
+			else if (arg == "ж") { output += selection(6) }		//ж	
+			else if (arg == "з") { output += selection(7) }		//з
+			else if (arg == "и") { output += selection(8) }		//и	
+			else if (arg == "й") { output += selection(9) }		//й	
+			else if (arg == "к") { output += selection(10) }	//к	
+			else if (arg == "л") { output += selection(11) }	//л	
+			else if (arg == "м") { output += selection(12) }	//м	
+			else if (arg == "н") { output += selection(13) }	//н
+			else if (arg == "о") { output += selection(14) }	//о
+			else if (arg == "п") { output += selection(15) }	//п
+			else if (arg == "р") { output += selection(16) }	//р
+			else if (arg == "с") { output += selection(17) }	//c	
+			else if (arg == "т") { output += selection(18) }	//т
+			else if (arg == "у") { output += selection(19) }	//у	
+			else if (arg == "ф") { output += selection(20) }	//ф	
+			else if (arg == "х") { output += selection(21) }	//х	
+			else if (arg == "ц") { output += selection(22) }	//ц	
+			else if (arg == "ч") { output += selection(23) }	//ч	
+			else if (arg == "ш") { output += selection(24) }	//ш	
+			else if (arg == "щ") { output += selection(25) }	//щ	
+			else if (arg == "ь") { output += selection(26) }	//ь	
+			else if (arg == "э") { output += selection(27) }	//э	
+			else if (arg == "ю") { output += selection(28) }	//ю	
+			else if (arg == "я") { output += selection(29) }	//я
+			else if (arg == " ") { output += "    "}			// 
+			else
+								 { output += arg      }    
+
+			return output
+		}
+		function main() {
+			outputText = "";
+			text = (document.getElementById("input-text").value).toLowerCase();
+			
+			if ( text == "реверс" ){
+				rev = true
+			}
+
+			if ( text == "антиреверс" ){
+				rev = false
+			}
+
+			console.log(text)
+			if (rev == true) {
+				for (var i = text.length ; i >= 0; i--) {
+					outputText += translit(text[i])
+
+				}
+			}
+
+			else if ( rev == false ) {
+				for (var i = 0 ; i <= text.length; i++) {
+					outputText += translit(text[i])
+				}
+			}
+			print(outputText, rev)
+		}
+		
+	</script>
+
+</body>
+</html>
